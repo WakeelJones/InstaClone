@@ -1,14 +1,49 @@
-*{
+* {
   margin: 0;
 }
 
-.app{
+.app {
   background-color: #fafafa;
 }
 
-.app_header{
-  background-color: white;
+.app_header {
+  background-color: turquoise;
   padding: 20px;
   border-bottom: 1px solid lightgray;
   object-fit: contain;
+  display: flex;
+  justify-content: space-between;
+}
+
+.app_post {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+}
+.app_postright {
+  margin-left: 100px;
+  margin-top: 10px;
+}
+
+.app_signup {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+
+button:hover {
+  color: #fff;
+  margin-top: 10px;
+  border-radius: 25px;
+  border: 1px solid black;
+}
+
+.request {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+footer {
+  text-align: center;
+  background-color: turquoise;
 }

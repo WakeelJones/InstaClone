@@ -1,16 +1,17 @@
-.post{
-    background-color: white;
-    max-width: 500px;
-    border: 1px solid lightgray;
-    margin-left: 35%;
-    margin-bottom: 45px;
+.post {
+  background-color: white;
+  max-width: 600px;
+  border: 1px solid lightgray;
+  border-radius: 25px;
+  margin-bottom: 30px;
+  margin-top: 10px;
 }
 
 .post_image {
-  width: 470px;
+  width: 450px;
   object-fit: contain;
-  height: 100%;
-  padding: 15px;
+  height: 90%;
+  padding: 10px;
   border-top: 1px solid lightgray;
   border-bottom: 1px solid lightgray;
 }
