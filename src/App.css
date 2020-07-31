@@ -56,3 +56,8 @@ footer {
   cursor: pointer;
   color: red;
 }
+
+.app_postFloatRight{
+  position: absolute;
+  padding: 15px;
+}

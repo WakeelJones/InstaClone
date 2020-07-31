@@ -1,0 +1,18 @@
+.community_post{
+    display: flexbox;
+    margin-left: 10px;
+    text-align: center;
+    position: relative;
+    margin-right: 85px;
+    border: 1px solid turquoise;
+}
+
+.post_avatar{
+    margin: 10px;
+    margin-right: 10px;
+}
+
+.post_text{
+    border-top: turquoise 1px solid;
+    border-bottom: turquoise 1px solid;
+}

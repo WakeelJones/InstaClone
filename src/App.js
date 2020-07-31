@@ -9,6 +9,7 @@ import InstagramEmbed from 'react-instagram-embed';
 
 import Post from './Post';
 import ImageUpload from './ImageUpload';
+import Community from './Community';
 
 function getModalStyle() {
   const top = 50;
@@ -170,7 +171,7 @@ function App() {
         {user ? (
           <div>
             <Button onClick={() => auth.signOut()}>Logout</Button>
-            <h3>You are logged in as: {user.displayName}</h3>
+            <h3>Logged in user : { user.displayName }</h3>
           </div>
         ) : (
           <div className="app_loginContainer">
@@ -180,6 +181,9 @@ function App() {
         )}
       </div>
       <div className="app_post">
+        <div>
+          <Community className="app_postFloatleft" />
+        </div>
         <div className="app_postleft">
           {posts.map(({ postId, postsId, post }) => (
             <Post
@@ -190,6 +194,7 @@ function App() {
               caption={post.caption}
               imageUrl={post.imageUrl}
             />
+            
           ))}
         </div>
         <div className="app_postright">
