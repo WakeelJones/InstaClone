@@ -31,11 +31,8 @@
   flex-direction: column;
 }
 
-button:hover {
-  color: #fff;
-  margin-top: 10px;
-  border-radius: 25px;
-  border: 1px solid black;
+button:hover{
+  color: red;
 }
 
 .request {
@@ -46,4 +43,16 @@ button:hover {
 footer {
   text-align: center;
   background-color: turquoise;
+}
+
+.icons a {
+  padding: 15px;
+  margin-right: 5px;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.icons a:hover{
+  cursor: pointer;
+  color: red;
 }

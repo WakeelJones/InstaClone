@@ -4,6 +4,7 @@ import { db, auth } from './firebase';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { Button, Input } from '@material-ui/core';
+
 import InstagramEmbed from 'react-instagram-embed';
 
 import Post from './Post';
@@ -73,7 +74,12 @@ function App() {
     db.collection('posts')
       .orderBy('timestamp', 'desc')
       .onSnapshot((snapshot) => {
-        setPosts(snapshot.docs.map((doc) => doc.data()));
+        setPosts(
+          snapshot.docs.map((doc) => ({
+            id: doc.postsId,
+            post: doc.data(),
+          }))
+        );
       });
   }, []);
 
@@ -162,7 +168,10 @@ function App() {
       <div className="app_header">
         <i class="fab fa-angrycreative fa-4x"></i>
         {user ? (
-          <Button onClick={() => auth.signOut()}>Logout</Button>
+          <div>
+            <Button onClick={() => auth.signOut()}>Logout</Button>
+            <h3>You are logged in as: {user.displayName}</h3>
+          </div>
         ) : (
           <div className="app_loginContainer">
             <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
@@ -172,8 +181,11 @@ function App() {
       </div>
       <div className="app_post">
         <div className="app_postleft">
-          {posts.map((post) => (
+          {posts.map(({ postId, postsId, post }) => (
             <Post
+              key={postsId}
+              postId={postId}
+              user={user}
               username={post.username}
               caption={post.caption}
               imageUrl={post.imageUrl}
@@ -197,17 +209,45 @@ function App() {
       </div>
 
       {user?.displayName ? (
-        <ImageUpload username={user.displayName} />
-      ) : (
-        <h3 className="request">Please Login to start uploading</h3>
-      )}
+              <ImageUpload username={user.displayName} />
+            ) : (
+              <h3 className="request">Please Login to start uploading</h3>
+            )}
 
       <footer>
-        <div>
-          <i class="fab fa-angrycreative fa-4x"></i>
-        </div>
-        <div>
-          Designed and Built By AngryCreative in {new Date().getFullYear()}
+        <div className="footer_content">
+          <div className="Logo">
+            <i class="fab fa-angrycreative fa-4x"></i>
+          </div>
+          <div className="App_Info">
+            Designed and Built By AngryCreative in {new Date().getFullYear()}
+          </div>
+          <div className="icons">
+            <a href="https://github.com/WakeelJones/InstaClone" target="blank">
+              <i class="fab fa-github"></i>
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=100008464240624"
+              target="blank"
+            >
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/wakeel_jones2402/"
+              target="blank"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/wakeel-jones-3b0036157/"
+              target="blank"
+            >
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://porfolio-ac.netlify.app/" target="blank">
+              <i class="fas fa-laptop-code"></i>
+            </a>
+          </div>
         </div>
       </footer>
     </div>
