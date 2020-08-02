@@ -171,7 +171,7 @@ function App() {
         {user ? (
           <div>
             <Button onClick={() => auth.signOut()}>Logout</Button>
-            <h3>Logged in user : { user.displayName }</h3>
+            <h3>Logged in user : {user.displayName}</h3>
           </div>
         ) : (
           <div className="app_loginContainer">
@@ -181,9 +181,12 @@ function App() {
         )}
       </div>
       <div className="app_post">
-        <div>
-          <Community className="app_postFloatleft" />
-        </div>
+        {user?.displayName ? (
+          <Community username={user.displayName} />
+
+        ) : (
+            <h3 className="complaint">Please Login to File a Complaint</h3>
+          )}
         <div className="app_postleft">
           {posts.map(({ postId, postsId, post }) => (
             <Post
@@ -194,7 +197,6 @@ function App() {
               caption={post.caption}
               imageUrl={post.imageUrl}
             />
-            
           ))}
         </div>
         <div className="app_postright">
@@ -214,10 +216,11 @@ function App() {
       </div>
 
       {user?.displayName ? (
-              <ImageUpload username={user.displayName} />
-            ) : (
-              <h3 className="request">Please Login to start uploading</h3>
-            )}
+        <ImageUpload username={user.displayName} />
+        
+      ) : (
+        <h3 className="request">Please Login to start uploading</h3>
+        )}
 
       <footer>
         <div className="footer_content">
